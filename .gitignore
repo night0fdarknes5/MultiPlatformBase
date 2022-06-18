@@ -1,0 +1,8 @@
+#Build and bin folders
+bin/
+obj/
+
+#DS Store
+*.ds_store
+
+
