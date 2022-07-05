@@ -43,6 +43,18 @@
         },
         {
             "type": "shell",
+            "label": "Build LUA",
+            "command": "make --directory ${workspaceFolder} -f lua-all-build.mak all",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
             "label": "Build Everything",
             "windows": {
                 "command": "${workspaceFolder}/build-all-win.bat",

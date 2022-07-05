@@ -5,8 +5,8 @@ OBJ_DIR := obj
 ASSEMBLY := engine
 EXTENSION := .dll
 COMPILER_FLAGS := -g -gcodeview -Wall -Werror -fdeclspec -m64 -Wvarargs
-INCLUDE_FLAGS := -Iengine\src 
-LINKER_FLAGS := -g -shared -luser32 -L$(OBJ_DIR)\$(ASSEMBLY)
+INCLUDE_FLAGS := -Iengine\src -Iexternals/lua -Iexternals
+LINKER_FLAGS := -g -shared -luser32 -L$(OBJ_DIR)\$(ASSEMBLY) $(BUILD_DIR)/lua.a
 DEFINES := -DDLLEXPORT -D_CRT_SECURE_NO_WARNINGS -DDEBUG -DWIN64
 
 # Make does not offer a recursive wildcard function, so here's one:
@@ -16,7 +16,7 @@ SRC_FILES := $(call rwildcard,$(ASSEMBLY)/,*.cpp) # Get all .cpp files
 DIRECTORIES := \$(ASSEMBLY)\src $(subst $(DIR),,$(shell dir $(ASSEMBLY)\src /S /AD /B | findstr /i src)) # Get all directories under src.
 OBJ_FILES := $(SRC_FILES:%=$(OBJ_DIR)/%.o) # Get all compiled .cpp.o objects for engine
 
-all: scaffold compile link
+all: scaffold compile link post
 
 .PHONY: scaffold
 scaffold: # create build directory
@@ -34,6 +34,13 @@ link: scaffold $(OBJ_FILES) # link
 compile: #compile .cpp files
 	@echo Compiling...
 
+.PHONY: post
+post: #post build step, copy script files to bin
+	@echo Performing post build steps...
+	-@setlocal enableextensions enabledelayedexpansion && mkdir $(BUILD_DIR)/scripts 2>NUL || cd .
+	@copy ../scripts/* $(BUILD_DIR)/scripts 
+	@echo Done
+
 .PHONY: clean
 clean: # clean build directory
 	if exist $(BUILD_DIR)\$(ASSEMBLY)$(EXTENSION) del $(BUILD_DIR)\$(ASSEMBLY)$(EXTENSION)
@@ -41,4 +48,4 @@ clean: # clean build directory
 
 $(OBJ_DIR)/%.cpp.o: %.cpp # compile .cpp to .cpp.o object
 	@echo   $<...
-	@clang++ $< $(COMPILER_FLAGS) -c -o $@ $(DEFINES) $(INCLUDE_FLAGS)
+	@clang++ $< $(COMPILER_FLAGS) -c -o $@ $(DEFINES) $(INCLUDE_FLAGS)  -std=c++17

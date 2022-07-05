@@ -5,8 +5,8 @@ OBJ_DIR := obj
 ASSEMBLY := testapp
 EXTENSION := .exe
 COMPILER_FLAGS := -g -gcodeview  -fdeclspec -m64
-INCLUDE_FLAGS := -Iengine\src -Itestapp\src 
-LINKER_FLAGS := -g -lengine.lib -L$(OBJ_DIR)\engine -L$(BUILD_DIR)
+INCLUDE_FLAGS := -Iengine\src -Itestapp\src  -Iexternals/lua -Iexternals
+LINKER_FLAGS := -g -lengine.lib -L$(OBJ_DIR)\engine -L$(BUILD_DIR) $(BUILD_DIR)/lua.a
 DEFINES := -DDEBUG -DDLLIMPORT -DWIN64
 
 # Make does not offer a recursive wildcard function, so here's one:
@@ -40,5 +40,5 @@ clean: # clean build directory
 
 $(OBJ_DIR)/%.cpp.o: %.cpp # compile .cpp to .cpp.o object
 	@echo   $<...
-	@clang $< $(COMPILER_FLAGS) -c -o $@ $(DEFINES) $(INCLUDE_FLAGS)
+	@clang $< $(COMPILER_FLAGS) -c -o $@ $(DEFINES) $(INCLUDE_FLAGS)  -std=c++17
 
