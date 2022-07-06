@@ -6,4 +6,5 @@
 function TestFunc()
     CPPTestFunc()
     print("Print from script function")
+    ChangeNum()
 end

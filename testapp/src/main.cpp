@@ -1,4 +1,5 @@
 #include "test.h"
+#include <defines.h>
 
 #include "sol/sol.hpp"
 
@@ -7,14 +8,14 @@
 
 int main(int argc, char** argv)
 {
-    std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
     
-    __declspec(dllimport) void Test();
+    DLL void Test();
     Test();
 
-    sol::state lua;
-    lua.open_libraries(sol::lib::base);
-    lua.script("print('Hello from app lua')");
+    //sol::state lua;
+    //lua.open_libraries(sol::lib::base);
+    //lua.script("print('Hello from app lua')");
 
     std::string s;
     std::cin >> s;

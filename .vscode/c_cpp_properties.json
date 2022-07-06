@@ -22,7 +22,8 @@
             "includePath": [
                 "${workspaceFolder}/engine/src/**",
                 "${workspaceFolder}/externals/lua/**",
-                "${workspaceFolder}/externals/sol/**"
+                "${workspaceFolder}/externals/sol/**",
+                "${workspaceFolder}/externals"
             ],
             "defines": [
                 "DEBUG",

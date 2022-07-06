@@ -41,8 +41,8 @@ archive: scaffold $(OBJ_FILES) # archive
 
 .PHONY: clean
 clean: # clean build directory
-	rmdir /s /q $(BUILD_DIR)/lib$(ASSEMBLY)$(EXTENSION)
-	rmdir /s /q $(OBJ_DIR)/$(ASSEMBLY)
+	del $(BUILD_DIR)\$(ASSEMBLY)$(EXTENSION)
+	rmdir /s /q $(OBJ_DIR)\externals\$(ASSEMBLY)
 
 $(OBJ_DIR)/%.c.o: %.c # compile .c to .o object
 	@echo   $<...
