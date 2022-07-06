@@ -37,8 +37,8 @@ compile: #compile .cpp files
 .PHONY: post
 post: #post build step, copy script files to bin
 	@echo Performing post build steps...
-	-@setlocal enableextensions enabledelayedexpansion && mkdir $(BUILD_DIR)/scripts 2>NUL || cd .
-	@copy ../scripts/* $(BUILD_DIR)/scripts 
+	-@setlocal enableextensions enabledelayedexpansion && mkdir $(BUILD_DIR)\scripts 2>NUL || cd .
+	@copy /y scripts\*.lua $(BUILD_DIR)\scripts 
 	@echo Done
 
 .PHONY: clean

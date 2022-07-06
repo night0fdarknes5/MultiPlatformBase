@@ -22,7 +22,8 @@ void CPPTestFunc()
     std::cout << "CPP Test function\n";
 };
 
-__attribute__((visibility("default"))) void Test()
+//__attribute__((visibility("default"))) void Test()
+__declspec(dllexport) void Test()
 {
     std::cout << "Hello from Dynamic Lib\n";
 
@@ -38,7 +39,4 @@ __attribute__((visibility("default"))) void Test()
     lua.set_function("CPPTestFunc",CPPTestFunc);
 
     TestFunc();
-
-
-
 }
