@@ -1,5 +1,5 @@
 #include "test.h"
-
+#include "luastate.h"
 
 #include "sol/sol.hpp"
 
@@ -26,18 +26,15 @@ void CPPTestFunc()
 
 DLL void Test()
 {
-    //std::cout << "Hello from Dynamic Lib\n";
-
-    sol::state lua;
+    auto& lua = LuaState::instance();
     lua.open_libraries(sol::lib::base);
-    //lua.script("print('hello from dll lua')");
     
     std::string path = std::filesystem::current_path().string() + "/scripts/script1.lua";
     lua.script_file(path);
     
     sol::function TestFunc = lua["TestFunc"];
 
-    lua.set_function("CPPTestFunc",CPPTestFunc);
+    LuaState::instance().set_function("CPPTestFunc",CPPTestFunc);
 
     TestClass t;
 
