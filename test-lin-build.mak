@@ -4,9 +4,9 @@ OBJ_DIR := obj
 ASSEMBLY := testapp
 EXTENSION := 
 COMPILER_FLAGS := -g -MD -Werror=vla -fdeclspec -fPIC
-INCLUDE_FLAGS := -Iengine/src -Itestapp\src 
+INCLUDE_FLAGS := -Itestapp\src 
 LINKER_FLAGS := -L./$(BUILD_DIR)/ -lengine -Wl,-rpath,.
-DEFINES := -DDEBUG -DDLLIMPORT
+DEFINES := -DDEBUG
 
 # Make does not offer a recursive wildcard function, so here's one:
 #rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))

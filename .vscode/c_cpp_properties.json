@@ -3,13 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/engine/src/**",
-                "${workspaceFolder}/externals/lua/**",
-                "${workspaceFolder}/externals/sol/**"
             ],
             "defines": [
                 "DEBUG",
-                "DLLEXPORT",
                 "LINUX"
             ],
             "compilerPath": "/usr/bin/clang++",
@@ -20,14 +16,9 @@
         {
             "name": "Win",
             "includePath": [
-                "${workspaceFolder}/engine/src/**",
-                "${workspaceFolder}/externals/lua/**",
-                "${workspaceFolder}/externals/sol/**",
-                "${workspaceFolder}/externals"
             ],
             "defines": [
                 "DEBUG",
-                "DLLEXPORT",
                 "WIN64"
             ],
             "windowsSdkVersion": "10.0.18362.0",
@@ -39,14 +30,9 @@
         {
             "name": "OSX",
             "includePath": [
-                "${workspaceFolder}/engine/src/**",
-                "${workspaceFolder}/externals/lua/**",
-                "${workspaceFolder}/externals/sol/**",
-                "${workspaceFolder}/externals"
             ],
             "defines": [
                 "DEBUG",
-                "DLLEXPORT",
                 "MAC"
             ],
             "compilerPath": "/usr/bin/clang++",

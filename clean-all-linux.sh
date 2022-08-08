@@ -4,14 +4,6 @@ set echo on
 
 echo "Cleaning everything..."
 
-make -f eng-lin-build clean
-
-ERRORLEVEL=$?
-if [ $ERRORLEVEL -ne 0 ]
-then
-echo "Error:"$ERRORLEVEL && exit
-fi
-
 make -f test-lin-build clean
 ERRORLEVEL=$?
 if [ $ERRORLEVEL -ne 0 ]

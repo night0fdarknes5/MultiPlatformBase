@@ -5,9 +5,9 @@ OBJ_DIR := obj
 ASSEMBLY := testapp
 EXTENSION := .exe
 COMPILER_FLAGS := -g -gcodeview  -fdeclspec -m64
-INCLUDE_FLAGS := -Iengine\src -Itestapp\src  -Iexternals/lua -Iexternals
-LINKER_FLAGS := -g -lengine.lib -L$(OBJ_DIR)\engine -L$(BUILD_DIR) $(BUILD_DIR)/lua.a
-DEFINES := -DDEBUG -DDLLIMPORT -DWIN64
+INCLUDE_FLAGS := -Itestapp\src
+LINKER_FLAGS := -g -L$(BUILD_DIR)
+DEFINES := -DDEBUG -DWIN64
 
 # Make does not offer a recursive wildcard function, so here's one:
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))

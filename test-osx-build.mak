@@ -3,10 +3,10 @@ OBJ_DIR := obj
 
 ASSEMBLY := testapp
 EXTENSION := 
-COMPILER_FLAGS := -g -fdeclspec -fPIC 
-INCLUDE_FLAGS := -Iengine/src -Itestapp/src -Iexternals/lua -Iexternals
-LINKER_FLAGS := -L./$(BUILD_DIR)/ -lengine $(BUILD_DIR)/lua.a -Wl,-rpath,. -rpath @executable_path
-DEFINES := -DDEBUG -DDLLIMPORT
+COMPILER_FLAGS := -g -fPIC 
+INCLUDE_FLAGS := -Itestapp/src
+LINKER_FLAGS := -L./$(BUILD_DIR)/ -Wl,-rpath,. -rpath @executable_path
+DEFINES := -DDEBUG
 
 SRC_FILES := $(shell find $(ASSEMBLY) -name *.cpp)		# .cpp files
 DIRECTORIES := $(shell find $(ASSEMBLY) -type d)		# directories with .h files
